@@ -106,27 +106,36 @@ function returnLast(arr) {
   // version 1
   // return arr[arr.length - 1];
   // version 2
+  return arr[arr.length -1];
 }
 
 function getArrayLength(arr) {
   //return the length of the array
+  return arr.length;
 }
 
 function incrementByOne(arr) {
   //arr is an array of integers
   //increase each integer by one
   //return the array
+   for (var i = 0; i < arr.length; i++) {
+  arr[i] += 1;
+ } return arr;
 }
 
 function addItemToArray(arr, item) {
   //add the item to the end of the array
   //return the array
+  arr.push(item);
+  return arr;
 }
 
 function addItemToFront(arr, item) {
   //add the item to the front of the array
   //return the array
   //hint: use the array method .unshift
+  arr.unshift(item);
+  return arr;
 }
 
 function wordsToSentence(words) {
@@ -134,26 +143,50 @@ function wordsToSentence(words) {
   //return a string that is all of the words concatenated together
   //spaces need to be between each word
   //example: ['Hello', 'world!'] -> 'Hello world!'
+  var sentence = words.join(' ');
+  return sentence;
 }
 
 function contains(arr, item) {
   //check to see if item is inside of arr
   //return true if it is, otherwise return false
+  if (arr.indexOf(item) > -1) {
+    return true;
+} else {
+  return false;
+}
 }
 
 function addNumbers(numbers) {
   //numbers is an array of integers.
   //add all of the integers and return the value
+  var result = 0;
+  for (var i = 0; i < numbers.length; i++) {
+    result += numbers[i];
+  }
+  return result;
 }
 
 function averageTestScore(testScores) {
   //testScores is an array.  Iterate over testScores and compute the average.
   //return the average
+  var result = 0;
+  for (var i = 0; i < testScores.length; i++) {
+      result += testScores[i];
+    }
+  return result / testScores.length;
 }
 
 function largestNumber(numbers) {
   //numbers is an array of integers
   //return the largest integer
+  var result = numbers[0];
+  for (var i = 1; i < numbers.length; i++) {
+    if (numbers[i] > result) {
+      result = numbers[i];
+    }
+  }
+  return result;
 }
 
 function makeCat(name, age) {
@@ -161,61 +194,99 @@ function makeCat(name, age) {
   //add an age property to the object with the value set to the age argument
   //add a method called meow that returns the string 'Meow!'
   //return the object
+  var cat = {
+    name: name,
+    age: age,
+    meow: function() { return 'Meow!';}
+  };
+  return cat;
 }
 
 function addProperty(object, property) {
   //add the property to the object with a value of null
   //return the object
   //note: the property name is NOT 'property'.  The name is the value of the argument called property (a string)
+  object[property] = null;
+  return object;
 }
+
 
 function invokeMethod(object, method) {
   //method is a string that contains the name of a method on the object
   //invoke this method
   //nothing needs to be returned
+  object[method]();
 }
 
 function multiplyMysteryNumberByFive(mysteryNumberObject) {
   //mysteryNumberObject has a property called mysteryNumber
   //multiply the mysteryNumber property by 5 and return the product
+  return mysteryNumberObject.mysteryNumber * 5;
 }
 
 function deleteProperty(object, property) {
   //remove the property from the object
   //return the object
+  delete object[property];
+  return object;
 }
 
 function newUser(name, email, password) {
   //create a new object with properties matching the arguments passed in.
   //return the new object
+  var newObject = {
+    name: name,
+    email: email,
+    password: password,
+  };
+  return newObject;
 }
 
 function hasEmail(user) {
   //return true if the user has a value for the property 'email'
   //otherwise return false
+  if (user ['email']) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function hasProperty(object, property) {
   //return true if the object has the value of the property argument
   //property is a string
   //otherwise return false
+  if (object[property]) {
+    return true;     
+  } else {
+      return false;
+    }
 }
 
 function verifyPassword(user, password) {
   //check to see if the provided password matches the password property on the user object
   //return true if they match
   //otherwise return false
+  if (user['password'] === password) {
+    return true;
+    } else {
+      return false;
+  }
 }
 
 function updatePassword(user, newPassword) {
   //replace the existing password on the user object with the value of newPassword
   //return the object
+  user['password'] = newPassword;
+  return user;
 }
 
 function addFriend(user, newFriend) {
   //user has a property called friends that is an array
   //add newFriend to the end of the friends array
   //return the user object
+  user.friends.push(newFriend);
+  return user;
 }
 
 function setUsersToPremium(users) {
@@ -223,6 +294,10 @@ function setUsersToPremium(users) {
   //each user object has the property 'isPremium'
   //set each user's isPremium property to true
   //return the users array
+  for (var i=0; i < users.length; i++) {
+    users[i].isPremium = true;
+  }
+  return users;
 }
 
 function sumUserPostLikes(user) {
@@ -231,6 +306,11 @@ function sumUserPostLikes(user) {
   //each post object has an integer property called 'likes'
   //sum together the likes from all the post objects
   //return the sum
+  var result = 0;
+  for (var i = 0; i < 'posts'.length; i++) {
+    result += user.posts[i].likes;
+  }
+  return result;
 }
 
 function addCalculateDiscountPriceMethod(storeItem) {
@@ -241,6 +321,11 @@ function addCalculateDiscountPriceMethod(storeItem) {
   //price -> 20
   //discountPercentage -> .2
   //discountPrice = 20 - (20 * .2)
+  storeItem['calculateDiscountPrice'] = function() {
+    var discountedPrice = storeItem.price - (storeItem.price * storeItem.discountPercentage);
+    return discountedPrice;
+  };
+  return storeItem;
 }
 
 
